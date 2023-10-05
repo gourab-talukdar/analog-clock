@@ -6,4 +6,5 @@ This is a simple analog clock project implemented in HTML, CSS, JS, which allows
 
 Developer : Gourab Talukdar
 LinkedIn : https://www.linkedin.com/in/gourabtalukdar/
+<br>
 Email : iamgourabtalukdar@gmail.com
