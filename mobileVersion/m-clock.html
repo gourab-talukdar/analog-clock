@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    <title>Analogue Clock</title>
+    <style type="text/css">
+            *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+}
+#wrapper{
+        min-height: 100vh;
+        width: 100%;
+        background: #cccccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+}
+#clock-frame{
+        height: 15rem;
+        width: 15rem;
+        border: 0.6rem solid #ccc;
+        background: #d2d2d2;
+        box-shadow: 4px 5px 1.2rem rgba(0, 0, 0, 0.4),
+                        inset 4px 6px 1.2rem rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        position: relative;
+}
+#handle-container{
+        background: #d2d2d2;
+        height: 80%;
+        width: 80%;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 5;
+}
+#center-pin{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        height: 1rem;
+        width: 1rem;
+        background: rgba(57,73,171 ,1);
+        border-radius: 50%;
+        box-shadow: 2px 3px 1rem rgba(0, 0, 0, 0.4);
+        z-index: 10;
+}
+#second-handle{
+        width: 2px;
+        height: 40%;
+        background: #d50000;
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        transform-origin: bottom;
+        z-index: 9;
+}
+
+#minute-handle{
+        width: 3px;
+        height: 34%;
+        background: #212121;
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        transform-origin: bottom;
+        z-index: 8;
+}
+#hour-handle{
+        width: 4px;
+        height: 24%;
+        background: #2962FF;
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        transform-origin: bottom;
+        z-index: 7;
+}
+
+/*time digits style */
+#time-12{
+        position: absolute;
+        top: 1%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.3rem;
+        z-index: 6;
+}
+#time-3{
+        position: absolute;
+        top: 50%;
+        right: 4%;
+        transform: translateY(-50%);
+        font-size: 1.3rem;
+        z-index: 6;
+}
+#time-6{
+        position: absolute;
+        bottom: 1%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.3rem;
+        z-index: 6;
+}
+#time-9{
+        position: absolute;
+        top: 50%;
+        left: 4%;
+        transform: translateY(-50%);
+        font-size: 1.3rem;
+        z-index: 6;
+}
+/*time other (dot) style */
+.time-other{
+        height: 43%;
+        width: .2rem;
+        background: #757575;
+        display: inline-block;
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        transform-origin: bottom;
+}
+#time-1{
+        transform: rotate(30deg);       
+}
+#time-2{
+        transform: rotate(60deg);
+}
+#time-4{
+        transform: rotate(120deg);
+}
+#time-5{
+        transform: rotate(150deg);
+}
+#time-7{
+        transform: rotate(210deg);
+}
+#time-8{
+        transform: rotate(240deg);
+}
+#time-10{
+        transform: rotate(300deg);
+}
+#time-11{
+        transform: rotate(330deg);
+}
+@media only screen and (max-width: 450px){
+        #clock-frame{
+                height: 18rem;
+                width: 18rem;
+        }
+}
+@media only screen and (max-width: 350px){
+        #clock-frame{
+                height: 16rem;
+                width: 16rem;
+        }
+}
+@media only screen and (max-width: 280px){
+        #clock-frame{
+                height: 12rem;
+                width: 12rem;
+        }
+}
+
+    </style>
+</head>
+<body>
+        <div id="wrapper">
+        	<div id="clock-frame">
+        		<div id="handle-container">
+                                <!-- center pin -->
+                                <div id="center-pin"></div>
+                                <!-- second's handle -->
+                                <div id="second-handle"></div>
+                                <!-- minute handle -->
+                                <div id="minute-handle"></div>
+                                <!-- hour handle -->
+                                <div id="hour-handle"></div>              
+                        </div>
+
+                        <!-- time digits -->
+                        <span id="time-12">12</span>
+                        <span id="time-3">3</span>
+                        <span id="time-6">6</span>
+                        <span id="time-9">9</span>
+
+                        <!-- time other (dot) -->
+                        <span class="time-other" id="time-1"></span>
+                        <span class="time-other" id="time-2"></span>
+                        <span class="time-other" id="time-4"></span>
+                        <span class="time-other" id="time-5"></span>
+                        <span class="time-other" id="time-7"></span>
+                        <span class="time-other" id="time-8"></span>
+                        <span class="time-other" id="time-10"></span>
+                        <span class="time-other" id="time-11"></span>
+        	</div>
+        </div>
+
+        <script type="text/javascript">
+                const handleSecond = document.getElementById("second-handle");
+                const handleMinute = document.getElementById("minute-handle");
+                const handleHour = document.getElementById("hour-handle");
+
+                let hRotation = 0;
+                let mRotation = 0;
+                let sRotation = 0;
+
+                setInterval(function() {
+
+                        let time = new Date();
+                        hRotation = (time.getHours() * 30) + (time.getMinutes()/2);
+                        mRotation = time.getMinutes() * 6;
+                        sRotation = time.getSeconds() * 6;
+
+                        handleSecond.style.transform = `translateX(-50%) rotate(${sRotation}deg)`;
+                        handleMinute.style.transform = `translateX(-50%) rotate(${mRotation}deg)`;
+                        handleHour.style.transform = `translateX(-50%) rotate(${hRotation}deg)`;
+                },1000);
+        </script>
+</body>
+</html>

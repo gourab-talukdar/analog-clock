@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    
+    <title>Analog Clock</title>
+</head>
+<body>
+        <div id="wrapper">
+        	<div id="clock-frame">
+        		<div id="handle-container">
+                                <!-- center pin -->
+                                <div id="center-pin"></div>
+                                <!-- second's handle -->
+                                <div id="second-handle"></div>
+                                <!-- minute handle -->
+                                <div id="minute-handle"></div>
+                                <!-- hour handle -->
+                                <div id="hour-handle"></div>              
+                        </div>
+
+                        <!-- time digits -->
+                        <span id="time-12">12</span>
+                        <span id="time-3">3</span>
+                        <span id="time-6">6</span>
+                        <span id="time-9">9</span>
+
+                        <!-- time other (dot) -->
+                        <span class="time-other" id="time-1"></span>
+                        <span class="time-other" id="time-2"></span>
+                        <span class="time-other" id="time-4"></span>
+                        <span class="time-other" id="time-5"></span>
+                        <span class="time-other" id="time-7"></span>
+                        <span class="time-other" id="time-8"></span>
+                        <span class="time-other" id="time-10"></span>
+                        <span class="time-other" id="time-11"></span>
+        	</div>
+        </div>
+
+        <script type="text/javascript">
+                const handleSecond = document.getElementById("second-handle");
+                const handleMinute = document.getElementById("minute-handle");
+                const handleHour = document.getElementById("hour-handle");
+
+                let hRotation = 0;
+                let mRotation = 0;
+                let sRotation = 0;
+
+                setInterval(function() {
+
+                        let time = new Date();
+                        hRotation = (time.getHours() * 30) + (time.getMinutes()/2);
+                        mRotation = time.getMinutes() * 6;
+                        sRotation = time.getSeconds() * 6;
+
+                        handleSecond.style.transform = `translateX(-50%) rotate(${sRotation}deg)`;
+                        handleMinute.style.transform = `translateX(-50%) rotate(${mRotation}deg)`;
+                        handleHour.style.transform = `translateX(-50%) rotate(${hRotation}deg)`;
+                },1000);
+        </script>
+</body>
+</html>
